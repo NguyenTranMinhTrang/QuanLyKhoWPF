@@ -10,6 +10,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="645" Width="940"
         DataContext="{StaticResource MainVM}"
+        Name="mainWindow"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -20,7 +21,7 @@
         >
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}"/>
+            <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" CommandParameter="{Binding ElementName=mainWindow}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid Margin="20">

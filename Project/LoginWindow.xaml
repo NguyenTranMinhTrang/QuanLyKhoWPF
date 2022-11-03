@@ -3,12 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         xmlns:local="clr-namespace:Project"
         xmlns:uc="clr-namespace:Project.UserContr"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="LoginWindow" Height="645" Width="875"
-       
+        DataContext="{StaticResource LoginVM}"
+        Name="loginWindow"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -94,12 +96,18 @@
                 </uc:ControlBar>
                 <!--Inputs-->
                 <StackPanel VerticalAlignment="Center" Margin="75 0">
-                    <TextBox Margin="0,0,0,15" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC" materialDesign:HintAssist.FloatingOffset="0,-25" materialDesign:HintAssist.Hint="Username" Text="John.Doe_am" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                    <TextBox  Margin="0,0,0,15" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC" materialDesign:HintAssist.FloatingOffset="0,-25" materialDesign:HintAssist.Hint="Tên Đăng Nhập" Text="{Binding UserName}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
 
-                    <PasswordBox Margin="0 0 0 50" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC" materialDesign:HintAssist.FloatingOffset="0,-25" materialDesign:HintAssist.Hint="Password" Password="1234567890" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                    <PasswordBox x:Name="PasswordBox" Margin="0 0 0 50" BorderThickness="0 0 0 1.5" BorderBrush="#C5C8CC" materialDesign:HintAssist.FloatingOffset="0,-25" materialDesign:HintAssist.Hint="Mật Khẩu" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" >
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PasswordChanged">
+                                <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}" CommandParameter="{Binding ElementName=PasswordBox}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </PasswordBox>
                                   
                     <StackPanel Orientation="Horizontal">
-                        <Button Content="Login" Background="#272537" Foreground="#ffffff" FontSize="18" materialDesign:ButtonAssist.CornerRadius="22" Height="45" Width="120"/>
+                        <Button IsDefault="True" Command="{Binding LoginCommand}" CommandParameter="{Binding ElementName=loginWindow}" Content="Login" Background="#272537" Foreground="#ffffff" FontSize="18" materialDesign:ButtonAssist.CornerRadius="22" Height="45" Width="120"/>
                         <Button Content="or Sign Up" materialDesign:ButtonAssist.CornerRadius="22" FontSize="16" Height="45" Width="120" Margin="5 0 0 0" Style="{StaticResource MaterialDesignFlatButton}"/>
                     </StackPanel>
                 </StackPanel>

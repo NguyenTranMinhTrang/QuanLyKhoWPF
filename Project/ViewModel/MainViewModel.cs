@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,11 +23,25 @@ namespace Project.ViewModel
 
         public MainViewModel()
         {
-            LoadedWindowCommand = new RelayCommand<object>((p) => { return true; }, (p) => {
+            LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
                 Isloaded = true;
+                if (p == null)
+                    return;
+                p.Hide();
                 LoginWindow loginWindow = new LoginWindow();
                 loginWindow.ShowDialog();
+                if (loginWindow.DataContext == null)
+                    return;
+                var loginVM = loginWindow.DataContext as LoginViewModel;
+                if (loginVM.IsLogin)
+                {
+                    p.Show();
                 }
+                else
+                {
+                    p.Close();
+                }
+            }
              );
 
             UnitCommand = new RelayCommand<object>((p) => { return true; }, (p) => { UnitWindow wd = new UnitWindow(); wd.ShowDialog(); });
@@ -36,6 +51,8 @@ namespace Project.ViewModel
             UserCommand = new RelayCommand<object>((p) => { return true; }, (p) => { UserWindow wd = new UserWindow(); wd.ShowDialog(); });
             InputCommand = new RelayCommand<object>((p) => { return true; }, (p) => { InputWindow wd = new InputWindow(); wd.ShowDialog(); });
             OutputCommand = new RelayCommand<object>((p) => { return true; }, (p) => { OutputWindow wd = new OutputWindow(); wd.ShowDialog(); });
+
+            var a = DataProvider.Ins.DB.Users.ToList();
         }
              
      }
