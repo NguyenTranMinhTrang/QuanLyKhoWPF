@@ -44,18 +44,68 @@
                 <WrapPanel Grid.Row="3" Margin="24">
 
 
-                    <TextBox materialDesign:HintAssist.Hint="Tên Nhà Cung Cấp" Margin="5 5 15 5" Text="{Binding DisplayName , UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource filterTextBox}"  />
+                    <Border Margin = "5 5 15 5" CornerRadius = "10" Background = "White"  Height = "50">
+                        <Grid>
+                            <TextBox materialDesign:HintAssist.Hint="Tên Nhà Cung Cấp" Text="{Binding DisplayName , UpdateSourceTrigger=PropertyChanged}"  Style = "{StaticResource MaterialDesignFloatingHintTextBox}"
+                                BorderThickness = "0"
+                                Background = "Transparent"
+                                FontSize = "15"
+                                Padding = "5"
+                                Foreground = "Black"
+                                />
+                        </Grid>
+                    </Border>
 
 
-                    <TextBox materialDesign:HintAssist.Hint="Địa Chỉ" Margin="5 5 15 5" Text="{Binding Address , UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource filterTextBox}"/>
+                    <Border Margin = "5 5 15 5" CornerRadius = "10" Background = "White"  Height = "50">
+                        <Grid>
+                            <TextBox materialDesign:HintAssist.Hint="Địa Chỉ" Text="{Binding Address , UpdateSourceTrigger=PropertyChanged}"  Style = "{StaticResource MaterialDesignFloatingHintTextBox}"
+                                BorderThickness = "0"
+                                Background = "Transparent"
+                                FontSize = "15"
+                                Padding = "5"
+                                Foreground = "Black"
+                                />
+                        </Grid>
+                    </Border>
 
-                    <TextBox materialDesign:HintAssist.Hint="Điện Thoại" Margin="5 5 15 5" Text="{Binding Phone , UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource filterTextBox}"/>
+                    <Border Margin = "5 5 15 5" CornerRadius = "10" Background = "White"  Height = "50">
+                        <Grid>
+                            <TextBox materialDesign:HintAssist.Hint="Điện Thoại" Text="{Binding Phone , UpdateSourceTrigger=PropertyChanged}"  Style = "{StaticResource MaterialDesignFloatingHintTextBox}"
+                                BorderThickness = "0"
+                                Background = "Transparent"
+                                FontSize = "15"
+                                Padding = "5"
+                                Foreground = "Black"
+                                />
+                        </Grid>
+                    </Border>
 
-                    <TextBox materialDesign:HintAssist.Hint="Email" Margin="5 5 15 5" Text="{Binding Email , UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource filterTextBox}"/>
+                    <Border Margin = "5 5 15 5" CornerRadius = "10" Background = "White"  Height = "50">
+                        <Grid>
+                            <TextBox materialDesign:HintAssist.Hint="Email" Text="{Binding Email , UpdateSourceTrigger=PropertyChanged}"  Style = "{StaticResource MaterialDesignFloatingHintTextBox}"
+                                BorderThickness = "0"
+                                Background = "Transparent"
+                                FontSize = "15"
+                                Padding = "5"
+                                Foreground = "Black"
+                                />
+                        </Grid>
+                    </Border>
 
-                    <TextBox  materialDesign:HintAssist.Hint="Thêm Thông Tin" Margin="5 5 15 5" Text="{Binding MoreInfo , UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource filterTextBox}"/>
+                    <Border Margin = "5 5 15 5" CornerRadius = "10" Background = "White"  Height = "50">
+                        <Grid>
+                            <TextBox materialDesign:HintAssist.Hint="Thêm Thông Tin" Text="{Binding MoreInfo , UpdateSourceTrigger=PropertyChanged}"  Style = "{StaticResource MaterialDesignFloatingHintTextBox}"
+                                BorderThickness = "0"
+                                Background = "Transparent"
+                                FontSize = "15"
+                                Padding = "5"
+                                Foreground = "Black"
+                                />
+                        </Grid>
+                    </Border>
 
-                    <Border Margin="5 5 15 5"  CornerRadius="10" Background="White" Width="200" Height="40">
+                    <Border Margin="5 5 15 5"  CornerRadius="10" Background="White" Width="200" Height="50">
                         <Grid >
                             <DatePicker FontSize="15" materialDesign:HintAssist.Hint="Ngày Hợp Tác" Margin="5 -15 0 0" Width="150"  VerticalContentAlignment="Center" SelectedDate="{Binding ContractDate , UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Center"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                             <TextBlock

@@ -32,7 +32,7 @@ namespace Project.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.\\sqlexpress;User ID=DESKTOP-QABED6N\\DELL;Password=;Database=QuanLyKho;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=.\\sqlexpress;User ID=DESKTOP-QABED6N\\DELL;Password=;Database=QuanLyKho;Trusted_Connection=True;MultipleActiveResultSets=true");
             }
         }
 
@@ -76,13 +76,13 @@ namespace Project.Models
                     .WithMany(p => p.InputInfos)
                     .HasForeignKey(d => d.IdInput)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__InputInfo__IdInp__37A5467C");
+                    .HasConstraintName("FK__InputInfo__IdInp__4AB81AF0");
 
                 entity.HasOne(d => d.IdObjectNavigation)
                     .WithMany(p => p.InputInfos)
                     .HasForeignKey(d => d.IdObject)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__InputInfo__Statu__36B12243");
+                    .HasConstraintName("FK__InputInfo__IdObj__4BAC3F29");
             });
 
             modelBuilder.Entity<Object>(entity =>
@@ -97,13 +97,13 @@ namespace Project.Models
                     .WithMany(p => p.Objects)
                     .HasForeignKey(d => d.IdSuplier)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Object__IdSuplie__2B3F6F97");
+                    .HasConstraintName("FK__Object__IdSuplie__4D94879B");
 
                 entity.HasOne(d => d.IdUnitNavigation)
                     .WithMany(p => p.Objects)
                     .HasForeignKey(d => d.IdUnit)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Object__BarCode__2A4B4B5E");
+                    .HasConstraintName("FK__Object__IdUnit__4CA06362");
             });
 
             modelBuilder.Entity<Output>(entity =>
@@ -121,33 +121,27 @@ namespace Project.Models
 
                 entity.Property(e => e.Id).HasMaxLength(128);
 
-                entity.Property(e => e.IdInputInfo).HasMaxLength(128);
-
                 entity.Property(e => e.IdObject).HasMaxLength(128);
+
+                entity.Property(e => e.IdOutputInfo).HasMaxLength(128);
 
                 entity.HasOne(d => d.IdNavigation)
                     .WithOne(p => p.OutputInfo)
                     .HasForeignKey<OutputInfo>(d => d.Id)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OutputInf__Statu__3C69FB99");
+                    .HasConstraintName("FK__OutputInfo__Id__403A8C7D");
 
                 entity.HasOne(d => d.IdCustomerNavigation)
                     .WithMany(p => p.OutputInfos)
                     .HasForeignKey(d => d.IdCustomer)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OutputInf__IdCus__3F466844");
-
-                entity.HasOne(d => d.IdInputInfoNavigation)
-                    .WithMany(p => p.OutputInfos)
-                    .HasForeignKey(d => d.IdInputInfo)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OutputInf__IdInp__3E52440B");
+                    .HasConstraintName("FK__OutputInf__IdCus__4E88ABD4");
 
                 entity.HasOne(d => d.IdObjectNavigation)
                     .WithMany(p => p.OutputInfos)
                     .HasForeignKey(d => d.IdObject)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__OutputInf__IdObj__3D5E1FD2");
+                    .HasConstraintName("FK__OutputInf__IdObj__4F7CD00D");
             });
 
             modelBuilder.Entity<Suplier>(entity =>
@@ -174,7 +168,7 @@ namespace Project.Models
                     .WithMany(p => p.Users)
                     .HasForeignKey(d => d.IdRole)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK__Users__IdRole__300424B4");
+                    .HasConstraintName("FK__Users__IdRole__5070F446");
             });
 
             modelBuilder.Entity<UserRole>(entity =>

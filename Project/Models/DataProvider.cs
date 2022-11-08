@@ -16,7 +16,7 @@ namespace Project.Models
                 if (_ins == null)
                 {
                     _ins = new DataProvider();
-                    
+
                 }
                 return _ins;
             }
@@ -31,4 +31,3 @@ namespace Project.Models
         }
     }
 }
- 

@@ -7,6 +7,7 @@
 
     <viewModel:MainViewModel x:Key="MainVM"></viewModel:MainViewModel>
     <viewModel:LoginViewModel x:Key="LoginVM"></viewModel:LoginViewModel>
+    <viewModel:UnitViewModel x:Key="UnitVM"></viewModel:UnitViewModel>
     
     
     <Style x:Key="menuButton" TargetType="Button">
@@ -338,7 +339,7 @@
                 <ControlTemplate TargetType="{x:Type TextBox}">
                     <Border CornerRadius="10" Background="White" Width="200" Height="40">
                         <Grid>
-                            <TextBox Margin="1" Text="{TemplateBinding Text}" 
+                            <TextBox Margin="1"
                                          BorderThickness="0"
                                          Background="Transparent"
                                          FontSize="15"

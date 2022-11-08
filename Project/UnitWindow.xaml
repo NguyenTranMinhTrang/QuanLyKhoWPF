@@ -4,8 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:uc="clr-namespace:Project.UserContr"
         mc:Ignorable="d"
+        DataContext="{StaticResource UnitVM}"
         Title="UnitWindow" Height="645" Width="875"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
@@ -41,7 +43,20 @@
                 <!--Text Show Nội Dung-->
                 <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="24" >
                     <TextBlock Margin="0 0 24 0"  Text="Đơn Vị" FontSize="18" FontWeight="SemiBold"  Foreground="#121518" VerticalAlignment="Center"/>
-                    <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"  Name="textBoxFilter" Style="{StaticResource filterTextBox}"/>
+                    <Border CornerRadius="10" Background="White"  Height="50">
+                        <Grid>
+                            <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" materialDesign:HintAssist.Hint="Tên đơn vị đo"  Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                             Margin="1"
+                             BorderThickness="0"
+                             Background="Transparent"
+                             FontSize="15"
+                             Padding="5"
+                             Foreground="Black"
+                             />
+                        </Grid>
+                    </Border>
+                    
+                    
                 </StackPanel>
 
                 <!--Button-->
@@ -97,8 +112,8 @@
                 <DataGrid 
             Grid.Row="5"
             Margin="24 72 24 0"
-            ItemsSource="{Binding List}"
-            SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}"
+            ItemsSource="{Binding List, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
             Style="{DynamicResource DataGridStyle1}" 
             CellStyle="{DynamicResource DataGridCellStyle1}" 
             ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"  

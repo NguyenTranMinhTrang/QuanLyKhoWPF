@@ -191,25 +191,11 @@
                         </Grid>
                     </Grid>
 
-                    <DataGrid x:Name="table" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"  RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="6">
+                    <DataGrid ItemsSource="{Binding TonKhoList}" x:Name="table" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"  RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="6">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}"/>
-                            <DataGridTemplateColumn Header="Member" IsReadOnly="True" Width="*">
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Border Width="25" Height="25" CornerRadius="50" Margin="0 0 10 0" Background="{Binding BgColor}">
-                                                <TextBlock Text="{Binding Character}" VerticalAlignment="Center" HorizontalAlignment="Center" Foreground="White" Margin="0 0 0 1"/>
-                                            </Border>
-
-                                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
-                                        </StackPanel>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTextColumn Header="Position" Binding="{Binding Position}" IsReadOnly="True" Width="*"/>
-                            <DataGridTextColumn Header="Email Address" Binding="{Binding Email}" IsReadOnly="True" Width="*"/>
-                            <DataGridTextColumn Header="Phone Number" Binding="{Binding Phone}" IsReadOnly="True" Width="*"/>
+                            <DataGridTextColumn Header="STT" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding STT}"/>
+                            <DataGridTextColumn Header="Tên Vật Tư" Binding="{Binding Object.DisplayName}" IsReadOnly="True" Width="*"/>
+                            <DataGridTextColumn Header="Số Lượng" Binding="{Binding Count}" IsReadOnly="True" Width="*"/>
                         </DataGrid.Columns>
                     </DataGrid>
 

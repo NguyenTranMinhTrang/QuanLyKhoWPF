@@ -5,11 +5,6 @@ namespace Project.Models
 {
     public partial class InputInfo
     {
-        public InputInfo()
-        {
-            OutputInfos = new HashSet<OutputInfo>();
-        }
-
         public string Id { get; set; } = null!;
         public string IdObject { get; set; } = null!;
         public string IdInput { get; set; } = null!;
@@ -20,6 +15,5 @@ namespace Project.Models
 
         public virtual Input IdInputNavigation { get; set; } = null!;
         public virtual Object IdObjectNavigation { get; set; } = null!;
-        public virtual ICollection<OutputInfo> OutputInfos { get; set; }
     }
 }
