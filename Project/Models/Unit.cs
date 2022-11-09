@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Project.ViewModel;
+using System;
 using System.Collections.Generic;
 
 namespace Project.Models
 {
-    public partial class Unit
+    public partial class Unit : BaseViewModel
     {
         public Unit()
         {
@@ -11,7 +12,9 @@ namespace Project.Models
         }
 
         public int Id { get; set; }
-        public string? DisplayName { get; set; }
+
+        private string _DisplayName;
+        public string DisplayName { get => _DisplayName; set { _DisplayName = value; OnPropertyChanged(); } }
 
         public virtual ICollection<Object> Objects { get; set; }
     }

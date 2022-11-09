@@ -107,7 +107,7 @@
 
                     <Border Margin="5 5 15 5"  CornerRadius="10" Background="White" Width="200" Height="50">
                         <Grid >
-                            <DatePicker FontSize="15" Margin="5 -15 0 0" materialDesign:HintAssist.Hint="Ngày Hợp Tác" Width="150"  VerticalContentAlignment="Center" SelectedDate="{Binding ContractDate , UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Center"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                            <DatePicker FontSize="15" Margin="5 -15 0 0" materialDesign:HintAssist.Hint="Ngày Hợp Tác" Width="150"  VerticalContentAlignment="Center" SelectedDate="{Binding ContractDate , UpdateSourceTrigger=PropertyChanged, StringFormat='dd/MM/yyyy'}" VerticalAlignment="Center" HorizontalAlignment="Center"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                             <TextBlock
                          IsHitTestVisible="False"
                          Text="Ngày Hợp Tác"

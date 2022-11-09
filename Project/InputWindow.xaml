@@ -106,7 +106,7 @@
 
                     <Border Margin="5 5 15 5"  CornerRadius="10" Background="White" Width="200" Height="40">
                         <Grid >
-                            <DatePicker FontSize="15" Margin="5 -15 0 0" materialDesign:HintAssist.Hint="Ngày Nhập" Width="150"  SelectedDate="{Binding DateInput , UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Center"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                            <DatePicker FontSize="15" Margin="5 -15 0 0" materialDesign:HintAssist.Hint="Ngày Nhập" Width="150"  SelectedDate="{Binding DateInput , UpdateSourceTrigger=PropertyChanged,  StringFormat='dd/MM/yyyy'}" VerticalAlignment="Center" HorizontalAlignment="Center"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                             <TextBlock
                          IsHitTestVisible="False"
                          Text="Ngày Hợp Tác"
@@ -202,7 +202,7 @@
                         <DataGridTextColumn Header="Giá Nhập" Binding="{Binding InputPrice}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="Giá Xuất" Binding="{Binding OutputPrice}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="Trạng Thái Nhập" Binding="{Binding Status}" IsReadOnly="True" Width="*"/>
-                        <DataGridTextColumn Header="Ngày Nhập" Binding="{Binding Input.DateInput}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Ngày Nhập" Binding="{Binding Input.DateInput,  StringFormat='dd/MM/yyyy'}" IsReadOnly="True" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

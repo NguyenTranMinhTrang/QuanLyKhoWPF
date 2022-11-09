@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Project"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:uc="clr-namespace:Project.UserContr"
+        DataContext="{StaticResource SuplierVM}"
         mc:Ignorable="d"
         Title="SuplierWindow" Height="645" Width="875"
         WindowStartupLocation="CenterScreen"
@@ -107,7 +108,7 @@
 
                     <Border Margin="5 5 15 5"  CornerRadius="10" Background="White" Width="200" Height="50">
                         <Grid >
-                            <DatePicker FontSize="15" materialDesign:HintAssist.Hint="Ngày Hợp Tác" Margin="5 -15 0 0" Width="150"  VerticalContentAlignment="Center" SelectedDate="{Binding ContractDate , UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Center" HorizontalAlignment="Center"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                            <DatePicker FontSize="15" materialDesign:HintAssist.Hint="Ngày Hợp Tác" Margin="5 -15 0 0" Width="150"  VerticalContentAlignment="Center" SelectedDate="{Binding ContractDate , UpdateSourceTrigger=PropertyChanged, StringFormat='dd/MM/yyyy'}" VerticalAlignment="Center" HorizontalAlignment="Center"  Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                             <TextBlock
                          IsHitTestVisible="False"
                          Text="Ngày Hợp Tác"
@@ -190,8 +191,8 @@
                 <DataGrid 
             Grid.Row="5"
             Margin="24 72 24 0"
-            ItemsSource="{Binding List}"
-            SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}"
+            ItemsSource="{Binding List , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
             Style="{DynamicResource DataGridStyle1}" 
             CellStyle="{DynamicResource DataGridCellStyle1}" 
             ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"  
@@ -204,7 +205,7 @@
                         <DataGridTextColumn Header="Điện thoại" Binding="{Binding Phone}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="Email" Binding="{Binding Email}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="Thông tin thêm" Binding="{Binding MoreInfo}" IsReadOnly="True" Width="*"/>
-                        <DataGridTextColumn Header="Ngày hợp tác" Binding="{Binding ContractDate}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Ngày hợp tác" Binding="{Binding ContractDate , StringFormat='dd/MM/yyyy'}" IsReadOnly="True" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

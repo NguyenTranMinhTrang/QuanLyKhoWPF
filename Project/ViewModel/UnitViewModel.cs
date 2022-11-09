@@ -58,6 +58,27 @@ namespace Project.ViewModel
 
                 List.Add(unit);
             });
+
+            EditCommand = new RelayCommand<object>((p) =>
+            {
+                if (string.IsNullOrEmpty(DisplayName) || SelectedItem == null)
+                    return false;
+
+                var displayList = DataProvider.Ins.DB.Units.Where(x => x.DisplayName == DisplayName);
+                if (displayList == null || displayList.Count() != 0)
+                    return false;
+
+                return true;
+
+            }, (p) =>
+            {
+                var unit = DataProvider.Ins.DB.Units.Where(x => x.Id == SelectedItem.Id).SingleOrDefault();
+                unit.DisplayName = DisplayName;
+                DataProvider.Ins.DB.SaveChanges();
+
+                SelectedItem.DisplayName = DisplayName;
+            });
         }
     }
 }
+
