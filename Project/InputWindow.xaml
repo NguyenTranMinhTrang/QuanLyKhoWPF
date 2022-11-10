@@ -191,12 +191,14 @@
             Margin="24 72 24 0"
             ItemsSource="{Binding List}"
             SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}"
+            AlternationCount="{Binding List.Count}"
             Style="{DynamicResource DataGridStyle1}" 
             CellStyle="{DynamicResource DataGridCellStyle1}" 
             ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"  
             RowStyle="{DynamicResource DataGridRowStyle1}"   
              >
                     <DataGrid.Columns>
+                        <DataGridTextColumn Header="STT" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding AlternationIndex, RelativeSource={RelativeSource AncestorType=DataGridRow}}"/>
                         <DataGridTextColumn Header="Vật Tư" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Object.DisplayName}"/>
                         <DataGridTextColumn Header="Số Lượng" Binding="{Binding Count}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="Giá Nhập" Binding="{Binding InputPrice}" IsReadOnly="True" Width="*"/>

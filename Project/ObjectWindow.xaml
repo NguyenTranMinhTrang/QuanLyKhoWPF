@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Project"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:uc="clr-namespace:Project.UserContr"
+        DataContext="{StaticResource ObjectVM}"
         mc:Ignorable="d"
         Title="SuplierWindow" Height="645" Width="875"
         WindowStartupLocation="CenterScreen"
@@ -57,13 +58,13 @@
                     </Border>
 
 
-                    <ComboBox FontSize="15" Margin="5 5 15 5" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Đơn vị đo" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
+                    <ComboBox FontSize="15" Margin="5 5 15 5" DisplayMemberPath="DisplayName" ItemsSource="{Binding Unit}" SelectedItem="{Binding SelectedUnit, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Đơn vị đo" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
 
-                    <ComboBox FontSize="15" Margin="5 5 15 5" ItemsSource="{Binding Suplier}" SelectedItem="{Binding SelectedSuplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Nhà cung cấp" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
+                    <ComboBox FontSize="15" Margin="5 5 15 5" DisplayMemberPath="DisplayName" ItemsSource="{Binding Suplier}" SelectedItem="{Binding SelectedSuplier, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Nhà cung cấp" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
 
                     <Border Margin = "5 5 15 5" CornerRadius = "10" Background = "White"  Height = "50">
                         <Grid>
-                            <TextBox materialDesign:HintAssist.Hint="QR Code" Text="{Binding QRCode , UpdateSourceTrigger=PropertyChanged}"  Style = "{StaticResource MaterialDesignFloatingHintTextBox}"
+                            <TextBox materialDesign:HintAssist.Hint="QR Code" Text="{Binding Qrcode , UpdateSourceTrigger=PropertyChanged}"  Style = "{StaticResource MaterialDesignFloatingHintTextBox}"
                                 BorderThickness = "0"
                                 Background = "Transparent"
                                 FontSize = "15"
@@ -140,18 +141,20 @@
                     Grid.Row="5"
                     Margin="24 72 24 0"
                     ItemsSource="{Binding List}"
-                    SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}"
+                    SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                    AlternationCount="{Binding List.Count}"
                     Style="{DynamicResource DataGridStyle1}" 
                     CellStyle="{DynamicResource DataGridCellStyle1}" 
                     ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"  
                     RowStyle="{DynamicResource DataGridRowStyle1}"   
-                >
+                    
+                    >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="STT" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding AlternationIndex, RelativeSource={RelativeSource AncestorType=DataGridRow}}"/>
                         <DataGridTextColumn Header="Tên Vật Tư" Binding="{Binding DisplayName}" IsReadOnly="True" Width="*"/>
-                        <DataGridTextColumn Header="Đơn Vị Đo" Binding="{Binding Unit.DisplayName}" IsReadOnly="True" Width="*"/>
-                        <DataGridTextColumn Header="Nhà Cung Cấp" Binding="{Binding Suplier.DisplayName}" IsReadOnly="True" Width="*"/>
-                        <DataGridTextColumn Header="QRCode" Binding="{Binding QRCode}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Đơn Vị Đo" Binding="{Binding IdUnitNavigation.DisplayName}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Nhà Cung Cấp" Binding="{Binding IdSuplierNavigation.DisplayName}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="QRCode" Binding="{Binding Qrcode}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="BarCode" Binding="{Binding BarCode}" IsReadOnly="True" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>

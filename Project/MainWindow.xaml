@@ -191,9 +191,9 @@
                         </Grid>
                     </Grid>
 
-                    <DataGrid ItemsSource="{Binding TonKhoList}" x:Name="table" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"  RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="6">
+                    <DataGrid AlternationCount="{Binding TonKhoList.Count}" ItemsSource="{Binding TonKhoList}" x:Name="table" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"  RowStyle="{DynamicResource DataGridRowStyle1}" Grid.Row="6">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="STT" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding STT}"/>
+                            <DataGridTextColumn Header="STT" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding AlternationIndex, RelativeSource={RelativeSource AncestorType=DataGridRow}}"/>
                             <DataGridTextColumn Header="Tên Vật Tư" Binding="{Binding Object.DisplayName}" IsReadOnly="True" Width="*"/>
                             <DataGridTextColumn Header="Số Lượng" Binding="{Binding Count}" IsReadOnly="True" Width="*"/>
                         </DataGrid.Columns>

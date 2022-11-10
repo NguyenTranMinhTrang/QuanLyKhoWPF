@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Controls;
 
 namespace Project.ViewModel
 {
@@ -31,10 +32,10 @@ namespace Project.ViewModel
                 if (SelectedItem != null)
                 {
                     DisplayName = SelectedItem.DisplayName;
-                    QRCode = SelectedItem.Qrcode;
+                    Qrcode = SelectedItem.Qrcode;
                     BarCode = SelectedItem.BarCode;
-                    SelectedUnit = SelectedItem.IdUnit;
-                    SelectedSuplier = SelectedItem.Suplier;
+                    SelectedUnit = SelectedItem.IdUnitNavigation;
+                    SelectedSuplier = SelectedItem.IdSuplierNavigation;
                 }
             }
         }
@@ -65,8 +66,8 @@ namespace Project.ViewModel
         public string DisplayName { get => _DisplayName; set { _DisplayName = value; OnPropertyChanged(); } }
 
 
-        private string _QRCode;
-        public string QRCode { get => _QRCode; set { _QRCode = value; OnPropertyChanged(); } }
+        private string _Qrcode;
+        public string Qrcode { get => _Qrcode; set { _Qrcode = value; OnPropertyChanged(); } }
 
 
         private string _BarCode;
@@ -88,5 +89,55 @@ namespace Project.ViewModel
         public ICommand AddCommand { get; set; }
         public ICommand EditCommand { get; set; }
 
+        public ObjectViewModel()
+        {
+            List = new ObservableCollection<Models.Object>(DataProvider.Ins.DB.Objects);
+            Unit = new ObservableCollection<Models.Unit>(DataProvider.Ins.DB.Units);
+            Suplier = new ObservableCollection<Models.Suplier>(DataProvider.Ins.DB.Supliers);
+
+            AddCommand = new RelayCommand<object>((p) =>
+            {
+                if (SelectedSuplier == null || SelectedUnit == null)
+                    return false;
+                return true;
+
+            }, (p) =>
+            {
+                var Object = new Models.Object() { DisplayName = DisplayName, BarCode = BarCode, Qrcode = _Qrcode, IdSuplier = SelectedSuplier.Id, IdUnit = SelectedUnit.Id, Id = Guid.NewGuid().ToString() };
+
+                DataProvider.Ins.DB.Objects.Add(Object);
+                DataProvider.Ins.DB.SaveChanges();
+
+                List.Add(Object);
+            });
+
+            EditCommand = new RelayCommand<object>((p) =>
+            {
+                if (SelectedItem == null || SelectedSuplier == null || SelectedUnit == null)
+                    return false;
+
+                var displayList = DataProvider.Ins.DB.Objects.Where(x => x.Id == SelectedItem.Id);
+                if (displayList != null && displayList.Count() != 0)
+                    return true;
+
+                return false;
+
+            }, (p) =>
+            {
+                var Object = DataProvider.Ins.DB.Objects.Where(x => x.Id == SelectedItem.Id).SingleOrDefault();
+                Object.DisplayName = DisplayName;
+                Object.BarCode = BarCode;
+                Object.Qrcode = Qrcode;
+                Object.IdSuplier = SelectedSuplier.Id;
+                Object.IdSuplierNavigation = SelectedSuplier;
+                Object.IdUnit = SelectedUnit.Id;
+                Object.IdUnitNavigation = SelectedUnit;
+                DataProvider.Ins.DB.SaveChanges();
+
+                SelectedItem.DisplayName = DisplayName;
+            });
+        }
+
+        
     }
 }

@@ -114,13 +114,14 @@
             Margin="24 72 24 0"
             ItemsSource="{Binding List, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+            AlternationCount="{Binding List.Count}"
             Style="{DynamicResource DataGridStyle1}" 
             CellStyle="{DynamicResource DataGridCellStyle1}" 
             ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"  
             RowStyle="{DynamicResource DataGridRowStyle1}"   
              >
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Id}"/>
+                        <DataGridTextColumn Header="STT" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding AlternationIndex, RelativeSource={RelativeSource AncestorType=DataGridRow}}"/>
                         <DataGridTextColumn Header="Tên Đơn Vị" Binding="{Binding DisplayName}" IsReadOnly="True" Width="*"/>
 
                     </DataGrid.Columns>

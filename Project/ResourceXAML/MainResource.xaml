@@ -9,7 +9,8 @@
     <viewModel:LoginViewModel x:Key="LoginVM"></viewModel:LoginViewModel>
     <viewModel:UnitViewModel x:Key="UnitVM"></viewModel:UnitViewModel>
     <viewModel:SuplierViewModel x:Key="SuplierVM"></viewModel:SuplierViewModel>
-       
+    <viewModel:ObjectViewModel x:Key="ObjectVM"></viewModel:ObjectViewModel>
+        
 
 
         <Style x:Key="menuButton" TargetType="Button">
