@@ -14,5 +14,6 @@ namespace Project.Models
         public DateTime? DateInput { get; set; }
 
         public virtual ICollection<InputInfo> InputInfos { get; set; }
+
     }
 }

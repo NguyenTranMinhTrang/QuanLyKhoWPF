@@ -5,8 +5,10 @@ namespace Project.Models
 {
     public partial class InputInfo
     {
+        
         public string Id { get; set; } = null!;
         public string IdObject { get; set; } = null!;
+
         public string IdInput { get; set; } = null!;
         public int? Count { get; set; }
         public double? InputPrice { get; set; }
