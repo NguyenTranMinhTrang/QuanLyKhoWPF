@@ -44,9 +44,15 @@
                 <!--Text Show Nội Dung-->
                 <WrapPanel Grid.Row="3" Margin="24">
 
+                    <Border Margin="5 5 15 5"  CornerRadius="10" Background="White" Width="200" Height="50">
+                        <Grid >
+                            <ComboBox FontSize="15" Margin="5 5 15 5" DisplayMemberPath="Id" ItemsSource="{Binding InputList}" SelectedItem="{Binding SelectedInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Số Phiếu Nhập" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
+                        </Grid>
+                    </Border>
 
                     <Border Margin="5 5 15 5" CornerRadius="10" Background="White"  Height="50">
                         <Grid>
+                            
                         <TextBox materialDesign:HintAssist.Hint="Tên Vật Tư"  Text="{Binding ObjectDisplayName , UpdateSourceTrigger=PropertyChanged}"  Style="{StaticResource MaterialDesignFloatingHintTextBox}"  
                              BorderThickness="0"
                              Background="Transparent"
@@ -94,7 +100,7 @@
 
                     <Border Margin="5 5 15 5" CornerRadius="10" Background="White"  Height="50">
                         <Grid>
-                        <TextBox  materialDesign:HintAssist.Hint="Trạng Thái Nhập" Text="{Binding Status , UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            <TextBox  materialDesign:HintAssist.Hint="Trạng Thái Nhập" Text="{Binding Status , UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                               BorderThickness="0"
                              Background="Transparent"
                              FontSize="15"
