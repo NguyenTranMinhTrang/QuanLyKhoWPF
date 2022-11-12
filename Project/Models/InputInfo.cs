@@ -32,5 +32,7 @@ namespace Project.Models
 
         private Object _IdObjectNavigation;
         public virtual Object IdObjectNavigation { get => _IdObjectNavigation; set { _IdObjectNavigation = value; OnPropertyChanged(); } }
+
+        public virtual ICollection<OutputInfo> OutputInfos { get; } = new List<OutputInfo>();
     }
 }

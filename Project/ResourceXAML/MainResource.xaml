@@ -12,7 +12,7 @@
     <viewModel:ObjectViewModel x:Key="ObjectVM"></viewModel:ObjectViewModel>
     <viewModel:CustomerViewModel x:Key="CustomerVM"></viewModel:CustomerViewModel>
     <viewModel:InputViewModel x:Key="InputInfoVM"></viewModel:InputViewModel>
-
+    <viewModel:OutputViewModel x:Key="OutputInfoVM"></viewModel:OutputViewModel>
 
         <Style x:Key="menuButton" TargetType="Button">
         <Setter Property="Background" Value="Transparent" />

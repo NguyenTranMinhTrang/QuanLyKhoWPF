@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:Project"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:uc="clr-namespace:Project.UserContr"
+        DataContext="{StaticResource OutputInfoVM}"
         mc:Ignorable="d"
         Title="SuplierWindow" Height="645" Width="875"
         WindowStartupLocation="CenterScreen"
@@ -43,6 +44,11 @@
                 <!--Text Show Nội Dung-->
                 <WrapPanel Grid.Row="3" Margin="24">
 
+                    <Border Margin="5 5 15 5"  CornerRadius="10" Background="White" Width="200" Height="50">
+                        <Grid >
+                            <ComboBox FontSize="15" Margin="5 5 15 5" DisplayMemberPath="Id" ItemsSource="{Binding OutputList}" SelectedItem="{Binding SelectedOutput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Số Phiếu Xuất" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
+                        </Grid>
+                    </Border>
 
                     <Border Margin = "5 5 15 5" CornerRadius = "10" Background = "White"  Height = "50" >
                         <Grid >
@@ -81,7 +87,7 @@
                         </Grid >
                     </Border >
 
-                    <ComboBox FontSize="15" Margin="5 5 15 5" ItemsSource="{Binding Customer}" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Khách hàng" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
+                    <ComboBox FontSize="15" Margin="5 5 15 5" ItemsSource="{Binding Customer}" DisplayMemberPath="DisplayName" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Khách hàng" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
                    
                     <Border Margin="5 5 15 5"  CornerRadius="10" Background="White" Width="200" Height="40">
                         <Grid >
@@ -189,12 +195,12 @@
              >
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="STT" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding AlternationIndex, RelativeSource={RelativeSource AncestorType=DataGridRow}}"/>
-                        <DataGridTextColumn Header="Vật Tư" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Object.DisplayName}"/>
+                        <DataGridTextColumn Header="Vật Tư" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding IdObjectNavigation.DisplayName}"/>
                         <DataGridTextColumn Header="Số Lượng" Binding="{Binding Count}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="Giá Xuất" Binding="{Binding InputInfo.OutputPrice}" IsReadOnly="True" Width="*"/>
-                        <DataGridTextColumn Header="Khách Hàng" Binding="{Binding Customer.DisplayName}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Khách Hàng" Binding="{Binding IdCustomerNavigation.DisplayName}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="Trạng Thái Xuất" Binding="{Binding Status}" IsReadOnly="True" Width="*"/>
-                        <DataGridTextColumn Header="Ngày Xuất" Binding="{Binding Output.DateOnput , StringFormat='dd/MM/yyyy'}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Ngày Xuất" Binding="{Binding IdNavigation.DateOutput , StringFormat='dd/MM/yyyy'}" IsReadOnly="True" Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>

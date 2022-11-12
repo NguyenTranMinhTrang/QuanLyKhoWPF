@@ -27,6 +27,7 @@ namespace Project.ViewModel
 
         public MainViewModel()
         {
+            
             LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 Isloaded = true;
