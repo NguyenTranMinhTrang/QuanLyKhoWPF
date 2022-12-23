@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Project.ViewModel;
+using System;
 using System.Collections.Generic;
 
 namespace Project.Models
 {
-    public partial class OutputInfo
+    public partial class OutputInfo : BaseViewModel
     {
         public string Id { get; set; } = null!;
 
@@ -13,18 +14,36 @@ namespace Project.Models
 
         public int IdCustomer { get; set; }
 
-        public int? Count { get; set; }
 
-        public string? Status { get; set; }
+
+
+        private int _Count;
+        public int? Count { get => _Count; set { _Count = (int)value; OnPropertyChanged(); } }
+
+
+        private string? _Status;
+        public string? Status { get => _Status; set { _Status = value; OnPropertyChanged(); } }
 
         public string? IdInputInfo { get; set; }
 
-        public virtual Customer IdCustomerNavigation { get; set; } = null!;
+        //public virtual Customer IdCustomerNavigation { get; set; } = null!;
 
-        public virtual InputInfo? IdInputInfoNavigation { get; set; }
+        private Customer _IdCustomerNavigation;
+        public virtual Customer IdCustomerNavigation { get => _IdCustomerNavigation; set { _IdCustomerNavigation = value; OnPropertyChanged(); } }
+        
+        //public virtual InputInfo? IdInputInfoNavigation { get; set; }
 
-        public virtual Output IdNavigation { get; set; } = null!;
+        private InputInfo _IdInputInfoNavigation;
+        public virtual InputInfo IdInputInfoNavigation { get => _IdInputInfoNavigation; set { _IdInputInfoNavigation = value; OnPropertyChanged(); } }
 
-        public virtual Object IdObjectNavigation { get; set; } = null!;
+        //public virtual Output IdNavigation { get; set; } = null!;
+
+        private Output _IdNavigation;
+        public virtual Output IdNavigation { get => _IdNavigation; set { _IdNavigation = value; OnPropertyChanged(); } }
+
+        //public virtual Object IdObjectNavigation { get; set; } = null!;
+
+        private Object _IdObjectNavigation;
+        public virtual Object IdObjectNavigation { get => _IdObjectNavigation; set { _IdObjectNavigation = value; OnPropertyChanged(); } }
     }
 }

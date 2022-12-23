@@ -6,8 +6,9 @@ namespace Project.Models
     public partial class Output
     {
         public string Id { get; set; } = null!;
+
         public DateTime? DateOutput { get; set; }
 
-        public virtual OutputInfo? OutputInfo { get; set; }
+        public virtual ICollection<OutputInfo> OutputInfos { get; } = new List<OutputInfo>();
     }
 }

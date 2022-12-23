@@ -44,9 +44,15 @@
                 <!--Text Show Nội Dung-->
                 <WrapPanel Grid.Row="3" Margin="24">
 
-                    <Border Margin="5 5 15 5"  CornerRadius="10" Background="White" Width="200" Height="50">
+                    <Border Margin="5 5 15 5"  CornerRadius="10" Background="White"  Height="50">
                         <Grid >
-                            <ComboBox FontSize="15" Margin="5 5 15 5" DisplayMemberPath="Id" ItemsSource="{Binding OutputList}" SelectedItem="{Binding SelectedOutput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Số Phiếu Xuất" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
+                            <ComboBox HorizontalAlignment="Center" FontSize="15" Margin="5 5 15 5" DisplayMemberPath="Id" ItemsSource="{Binding OutputList}" SelectedItem="{Binding SelectedOutput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Số Phiếu Xuất" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
+                        </Grid>
+                    </Border>
+
+                    <Border Margin="5 5 15 5"  CornerRadius="10" Background="White"  Height="50">
+                        <Grid >
+                            <ComboBox HorizontalAlignment="Center" FontSize="15" Margin="5 5 15 5" DisplayMemberPath="Id" ItemsSource="{Binding Input}" SelectedItem="{Binding SelectedInput, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Số Phiếu Nhập" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
                         </Grid>
                     </Border>
 
@@ -77,12 +83,13 @@
 
                     <Border Margin = "5 5 15 5" CornerRadius = "10" Background = "White"  Height = "50" >
                         <Grid >
-                            <TextBox materialDesign:HintAssist.Hint = "Giá Xuất" Text = "{Binding PriceOutput , UpdateSourceTrigger=PropertyChanged}"  Style = "{StaticResource MaterialDesignFloatingHintTextBox}"
+                            <TextBox materialDesign:HintAssist.Hint = "Giá Xuất" Text = "{Binding OutputPrice , UpdateSourceTrigger=PropertyChanged}"  Style = "{StaticResource MaterialDesignFloatingHintTextBox}"
                 BorderThickness = "0"
                 Background = "Transparent"
                 FontSize = "15"
                 Padding = "5"
                 Foreground = "Black"
+                IsEnabled="False"                     
                 />
                         </Grid >
                     </Border >
@@ -197,7 +204,7 @@
                         <DataGridTextColumn Header="STT" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding AlternationIndex, RelativeSource={RelativeSource AncestorType=DataGridRow}}"/>
                         <DataGridTextColumn Header="Vật Tư" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding IdObjectNavigation.DisplayName}"/>
                         <DataGridTextColumn Header="Số Lượng" Binding="{Binding Count}" IsReadOnly="True" Width="*"/>
-                        <DataGridTextColumn Header="Giá Xuất" Binding="{Binding InputInfo.OutputPrice}" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Header="Giá Xuất" Binding="{Binding IdInputInfoNavigation.OutputPrice}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="Khách Hàng" Binding="{Binding IdCustomerNavigation.DisplayName}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="Trạng Thái Xuất" Binding="{Binding Status}" IsReadOnly="True" Width="*"/>
                         <DataGridTextColumn Header="Ngày Xuất" Binding="{Binding IdNavigation.DateOutput , StringFormat='dd/MM/yyyy'}" IsReadOnly="True" Width="*"/>

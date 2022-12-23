@@ -37,7 +37,7 @@ public partial class QuanLyKhoContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=.\\sqlexpress;User ID=DESKTOP-QABED6N\\\\\\\\DELL;Password=;Database=QuanLyKho;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=.\\sqlexpress;User ID=DESKTOP-QABED6N\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\DELL;Password=;Database=QuanLyKho;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -117,17 +117,17 @@ public partial class QuanLyKhoContext : DbContext
 
         modelBuilder.Entity<OutputInfo>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__OutputIn__3214EC07EDC28BE5");
+            entity.HasKey(e => e.IdOutputInfo);
 
             entity.ToTable("OutputInfo");
 
+            entity.Property(e => e.IdOutputInfo).HasMaxLength(128);
             entity.Property(e => e.Id).HasMaxLength(128);
             entity.Property(e => e.IdInputInfo).HasMaxLength(128);
             entity.Property(e => e.IdObject).HasMaxLength(128);
-            entity.Property(e => e.IdOutputInfo).HasMaxLength(128);
 
-            entity.HasOne(d => d.IdNavigation).WithOne(p => p.OutputInfo)
-                .HasForeignKey<OutputInfo>(d => d.Id)
+            entity.HasOne(d => d.IdNavigation).WithMany(p => p.OutputInfos)
+                .HasForeignKey(d => d.Id)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__OutputInfo__Id__403A8C7D");
 

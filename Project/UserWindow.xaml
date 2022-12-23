@@ -8,6 +8,7 @@
         xmlns:uc="clr-namespace:Project.UserContr"
         mc:Ignorable="d"
         Title="SuplierWindow" Height="645" Width="875"
+        DataContext="{StaticResource UserVM}"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -64,7 +65,7 @@
                                 />
                         </Grid>
                     </Border>
-                    <ComboBox FontSize="15" Margin="5 5 15 5" ItemsSource="{Binding Role}" SelectedItem="{Binding SelectedRole, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Quyền" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
+                    <ComboBox FontSize="15" Margin="5 5 15 5" DisplayMemberPath="DisplayName" ItemsSource="{Binding Role}" SelectedItem="{Binding SelectedRole, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Quyền" IsEditable="True" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
                 </WrapPanel>
 
                 <!--Button-->

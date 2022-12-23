@@ -29,8 +29,18 @@ namespace Project.ViewModel
             IsLogin = false;
             Password = "";
             UserName = "";
-            LoginCommand = new RelayCommand<Window>((p) => { return true; }, (p) => {
-                Login(p);
+            LoginCommand = new RelayCommand<Window>((p) => {
+                
+                return true;
+            }, (p) => {
+                if (Password.Equals("") || UserName.Equals(""))
+                {
+                    MessageBox.Show("Xin vui lòng nhập Username / Password !");
+                }
+                else
+                {
+                    Login(p);
+                }
             });
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, (p) => { Password = p.Password; });
         }

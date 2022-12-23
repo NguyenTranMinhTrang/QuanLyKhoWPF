@@ -120,17 +120,17 @@ namespace Project.Models
 
             modelBuilder.Entity<OutputInfo>(entity =>
             {
-                entity.HasKey(e => e.Id).HasName("PK__OutputIn__3214EC07EDC28BE5");
+                entity.HasKey(e => e.IdOutputInfo);
 
                 entity.ToTable("OutputInfo");
 
+                entity.Property(e => e.IdOutputInfo).HasMaxLength(128);
                 entity.Property(e => e.Id).HasMaxLength(128);
                 entity.Property(e => e.IdInputInfo).HasMaxLength(128);
                 entity.Property(e => e.IdObject).HasMaxLength(128);
-                entity.Property(e => e.IdOutputInfo).HasMaxLength(128);
 
-                entity.HasOne(d => d.IdNavigation).WithOne(p => p.OutputInfo)
-                    .HasForeignKey<OutputInfo>(d => d.Id)
+                entity.HasOne(d => d.IdNavigation).WithMany(p => p.OutputInfos)
+                    .HasForeignKey(d => d.Id)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__OutputInfo__Id__403A8C7D");
 
